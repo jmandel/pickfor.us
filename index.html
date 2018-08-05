@@ -1,0 +1,94 @@
+ 
+<HTML> 
+<HEAD> 
+<script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script language="JavaScript"> 
+  maxi = 2 ;
+  function addField(i) {
+	if (i == maxi && document.getElementById('choice_'+(maxi-1)).value != '') {
+ 
+		maxi++;
+	var newDiv = document.createElement('div');
+	
+	var newChoice = document.createElement('input');
+	
+	newChoice.setAttribute('type','test');
+	newChoice.setAttribute('name', 'choices[]');
+	newChoice.setAttribute('id', 'choice_'+maxi);
+	newChoice.setAttribute('onfocus', 'addField('+maxi+')');
+	newDiv.appendChild(document.createTextNode((maxi+1)+'. '));
+	newDiv.appendChild(newChoice);
+ 
+	document.getElementById('choices_inputs').appendChild(newDiv);
+	}
+ }
+
+$(function() {
+  $("input:first").focus();
+  $("button").click(function(){
+    var choices =[];
+     $("input").each(function() {var t = $(this).val(); if (t != "") choices.push(t);});
+     if (choices.length == 0) {alert("Can't pick with no choices!"); return;}
+
+     var rindex = Math.floor(Math.random() * (choices.length));
+     $("#Answer").html("You want: " + choices[rindex]);
+  });
+});
+</script> 
+<TITLE>Pick For Us!</TITLE> 
+<LINK REL=StyleSheet HREF="config/pickforus-style.css" TYPE="text/css" MEDIA=screen> 
+<!-- <LINK rel="SHORTCUT ICON" href="/favicon2.ico" type="image/x-icon"> --> 
+</HEAD> 
+<BODY style="margin: 0px;"> 
+ 
+  <div style="margin-right:3em; float:right"> 
+    <div class="quoteline">"Pick for us!" they cried at last in desperation.</div> 
+    <img src="fruit.jpg" border=1><br> 
+    <div class="quoteline" >And so it was.</div> 
+ 
+<div class="headerline" style="margin-top: 1px;">  
+ <div class="smallfont"> 
+ See also<br> 
+ - <a href="http://joshuamandel.com">joshuamandel.com</a> (professional)<br> 
+ - <a href="http://dilute.net">dilute.net</a> (personal)<br> 
+ - <a href="http://snarked.com">snarked.com</a> (recipes)<br> 
+ </div> 
+</div> 
+  </div> 
+ 
+ 
+ 
+ 
+<div class="headerline" style="width: 100%;"> 
+pickfor.us
+</div> 
+ 
+ 
+ 
+ 
+<div style="margin-left: 3em; z-index: 5;	"> 
+<br> 
+<div id='Answer' class='choice'></div> 
+Options:<br> 
+<div name="choices_inputs" id="choices_inputs"> 
+<div>1. <input type="text" name="choices[]" id="choice_0" value="" onfocus='addField(0)'></div><div>2. <input type="text" name="choices[]" id="choice_1" value="" onfocus='addField(1)'></div><div>3. <input type="text" name="choices[]" id="choice_2" value="" onfocus='addField(2)'></div></div> 
+<div class="smallfont">(As few as two, or as many as you like --- more boxes will appear as needed.)</div> 
+<button>Pick For Us!</button>
+
+<div class="headerline" style="width:100%; z-index: 0"> 
+</div> 
+ 
+ 
+</div> 
+ 
+ 
+ 
+ 
+ 
+</BODY> 
+ 
+</HTML> 
+ 
+ 
+ 
+ 
